@@ -38,11 +38,12 @@ export default function Articles() {
 
   return (
     <>
-      <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-        <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
+      <div className="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-10 mx-auto">
+        <div className="max-w-2xl mx-auto text-center mb-5 lg:mb-8">
           <h1 className="text-2xl font-bold md:text-4xl md:leading-tight text-blue">Nos assurances</h1>
         </div>
       </div>
+
       {isLoading && <p>Chargement</p>}
       {!isLoading &&
         <section>
@@ -60,12 +61,14 @@ export default function Articles() {
                 {tag}
               </button>
             ))}
-            <button
-              onClick={() => setSelectedTag(null)}
-              className="cursor-pointer px-3 py-1 rounded bg-orange text-white"
-            >
-              X
-            </button>
+            {selectedTag &&
+              <button
+                onClick={() => setSelectedTag(null)}
+                className="cursor-pointer px-3 py-1 rounded bg-orange text-white"
+              >
+                X
+              </button>
+            }
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[85rem] mx-auto mb-10">
             {filteredPosts?.map((post) => (
