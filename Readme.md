@@ -12,7 +12,6 @@ Listes des articles : http://localhost:3000/articles
 Article : http://localhost:3000/articles/{slug} (ex: http://localhost:3000/articles/per-retraite)
 
 ## Choix techniques
-
 Le projet est réalisé avec Next.js et TypeScript, en utilisant Tailwind CSS pour le style et TanStack Query pour la gestion des données.
 
 Pour les informations des articles, j’ai créé une mini API avec Hono, au lieu d’importer directement des fichiers JSON, afin de rendre le projet plus réaliste. L’API est disponible sur mon GitHub.
@@ -24,3 +23,6 @@ Dans un projet plus conséquent, mais dans un contexte similaire, j’opterais p
 - revalidation personnalisable des articles (refresh du contenu à un intervalle défini, sans besoin de rebuild complet),
 - meilleures performances SEO,
 - exécution plus rapide
+
+## Temps passé
+J’y ai passé environ 3 heures et demi. Je pense qu’il y a encore des optimisations possibles, notamment au niveau de la structure des pages. J’ai extrait le contenu en composants et conservé les pages principalement pour la gestion des métadonnées, mais il y a certainement moyen d’améliorer tout ça.
