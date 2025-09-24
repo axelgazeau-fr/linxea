@@ -3,13 +3,14 @@ import Link from "next/link";
 type CardArticleProps = {
   title: string;
   description: string;
+  selectedTag: string | null;
   link: string;
   price: number;
   tags: string[];
   date: string
 };
 
-export default function CardArticle({title, description, link, price, tags, date}: CardArticleProps) {
+export default function CardArticle({title, description, link, price, tags, date, selectedTag}: CardArticleProps) {
   const cleanDate = new Date(date);
   return (
     <Link className="bg-white group flex flex-col justify-around h-full border border-2 border-blue hover:border-orange hover:shadow-lg focus:outline-hidden focus:border-orange focus:shadow-lg transition duration-300 rounded-xl p-5" href={`/articles/${link}`}>
@@ -22,7 +23,11 @@ export default function CardArticle({title, description, link, price, tags, date
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="inline-flex items-center rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600"
+                className={`cursor-pointer px-3 py-1 rounded ${
+                  selectedTag === tag
+                    ? "bg-blue text-white"
+                    : "bg-gray-200 text-blue"
+                }`}
               >
                 {tag}
               </span>
