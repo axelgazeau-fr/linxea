@@ -1,6 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
+import CardArticle from "../components/CardArticle";
 
 type Post = {
   id: string ,
@@ -26,10 +27,25 @@ export default function Articles() {
   if (error) return <p>Une erreur est survenue</p>;
 
   return (
-    <ul>
-      {!isLoading && data?.map((post) => (
-        <li key={post.id}>{post.slug}</li>
-      ))}
-    </ul>
+    <>
+      <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+        <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
+          <h1 className="text-2xl font-bold md:text-4xl md:leading-tight text-blue">Nos assurances</h1>
+        </div>
+      </div>
+      <div  className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[85rem] mx-auto mb-10">
+        {!isLoading && data?.map((post) => (
+          <CardArticle
+            key={post.id}
+            title={post.title}
+            description={post.description}
+            link={post.slug}
+            price={post.price}
+            tags={post.tags}
+            date={post.updatedAt}
+          />
+        ))}
+      </div>
+    </>
   );
 }

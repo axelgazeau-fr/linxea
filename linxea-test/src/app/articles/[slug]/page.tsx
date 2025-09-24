@@ -17,7 +17,7 @@ type Post = {
 export default function Articles() {
   const params = useParams<{ slug: string }>()
   const { data, isLoading, error } = useQuery<Post>({
-    queryKey: ["posts"],
+    queryKey: ["post", params.slug],
     queryFn: async () => {
       const res = await fetch(`https://domco-vite-api-starter-sigma.vercel.app/products/${params.slug}`);
       if (!res.ok) throw new Error("Erreur lors du fetch");
@@ -28,7 +28,7 @@ export default function Articles() {
   if (error) return <p>Une erreur est survenue</p>;
 
   return (
-  <div className="p-4 border rounded">
+  <div className="p-4 border rounded text-blue">
     <h1 className="text-xl font-bold">{data?.title}</h1>
     <p>{data?.description}</p>
     <p>Prix: {data?.price} €</p>
